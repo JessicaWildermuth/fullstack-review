@@ -11,6 +11,7 @@ class App extends React.Component {
       repos: []
     }
    this.getRepos = this.getRepos.bind(this);
+   this.search = this.search.bind(this);
   }
 
   getRepos() {
@@ -35,9 +36,10 @@ class App extends React.Component {
       url: '/repos',
       data: {term},
     })
-     .done((data) => {
-       console.log('Post request sent')
-     });
+      .done((data) => {
+        console.log('Post request sent')
+        this.getRepos();
+      });
   }
 
   render () {

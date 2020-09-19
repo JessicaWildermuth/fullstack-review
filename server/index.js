@@ -27,6 +27,10 @@ app.get('/repos', function (req, res) {
   //sends a request to the db
   //fetches all of the repos
   save.Repo.find({lastUpdated: { $regex: '^202' }, forks: { $gte: 1 }, stargazers: { $gte: 1}}, (error, results) => {
+    results.sort(function (a, b) {
+      return b.stargazers - a.stargazers;
+    });
+    console.log(results);
     var listOf25 = results.slice(0, 25);
     res.send(listOf25)
   })

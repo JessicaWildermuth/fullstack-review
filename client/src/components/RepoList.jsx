@@ -12,7 +12,7 @@ const RepoList = (props) => (
       // var url = keys.indexOf('url');
       // url = values[url];
       return <div key={repo['reponame']}>
-      <p key={repo['owner']}> {repo.owner} </p>
+      <p key={`${repo['owner']} ${repo['_id']}`}> {repo.owner} </p>
       <p key={repo['reponame']}> {repo['reponame']}</p>
       <p key={'repoStargazers'}> {repo.stargazers} </p>
       <p key={'repoForks'}>{repo.forks}</p>
