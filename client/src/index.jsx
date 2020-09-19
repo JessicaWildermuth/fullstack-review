@@ -10,7 +10,19 @@ class App extends React.Component {
     this.state = {
       repos: []
     }
+   this.getRepos = this.getRepos.bind(this);
+  }
 
+  getRepos() {
+    $.ajax({
+      method: "GET",
+      url: '/repos',
+    })
+     .done((data) => {
+        this.setState({
+         repos: data
+        })
+     });
   }
 
   search (term) {
@@ -31,6 +43,7 @@ class App extends React.Component {
   render () {
     return (<div>
       <h1>Github Fetcher</h1>
+      {this.state.repos.length === 0 ? this.getRepos() : null}
       <RepoList repos={this.state.repos}/>
       <Search onSearch={this.search.bind(this)}/>
     </div>)

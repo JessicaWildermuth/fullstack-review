@@ -10,9 +10,10 @@ let getReposByUsername = (username, callback) => {
       'User-Agent': 'request',
       'Authorization': `token ${config.TOKEN}`
     }
-  }
+  };
   axios(options)
     .then((response) => {
+
       if(response.error) {
         console.log(response.error)
       }

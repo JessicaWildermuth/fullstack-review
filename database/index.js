@@ -41,3 +41,4 @@ let save = (userRepoData) => {
 }
 
 module.exports.save = save;
+module.exports.Repo = Repo;
